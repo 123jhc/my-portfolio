@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import { motion } from "framer-motion"
 import { ArrowDown, FileText } from "lucide-react"
 import { portfolioData } from "@/data/portfolio"
@@ -15,34 +16,38 @@ export function Hero() {
         transition={{ duration: 0.6, ease: "easeOut" }}
         className="flex flex-col items-center text-center"
       >
-        <div className="mb-6 h-24 w-24 overflow-hidden rounded-full bg-[var(--color-border)]">
-          <div className="flex h-full items-center justify-center text-3xl text-[var(--color-muted)]">
-            {personalInfo.name.charAt(0)}
-          </div>
+        <div className="mb-8 h-32 w-32 overflow-hidden rounded-full border-4 border-[var(--color-border)] md:h-40 md:w-40">
+          <Image
+            src={personalInfo.avatar}
+            alt={personalInfo.name}
+            width={160}
+            height={160}
+            className="h-full w-full object-cover"
+          />
         </div>
-        <h1 className="text-4xl font-bold tracking-tight md:text-5xl">
+        <h1 className="text-5xl font-bold tracking-tight md:text-7xl">
           {personalInfo.name}
         </h1>
-        <p className="mt-3 text-lg text-[var(--color-muted)]">
+        <p className="mt-4 text-xl text-[var(--color-muted)] md:text-2xl">
           {personalInfo.title}
         </p>
-        <p className="mt-4 max-w-md text-[var(--color-muted)]">
+        <p className="mt-4 max-w-lg text-base text-[var(--color-muted)] md:text-lg">
           {personalInfo.description}
         </p>
-        <div className="mt-8 flex items-center gap-4">
+        <div className="mt-10 flex items-center gap-4">
           {personalInfo.resumeUrl && (
             <a
               href={personalInfo.resumeUrl}
               target="_blank"
-              className="inline-flex items-center gap-2 rounded-xl bg-[var(--color-primary)] px-5 py-2.5 text-sm font-medium text-white transition-opacity hover:opacity-90"
+              className="inline-flex items-center gap-2 rounded-xl bg-[var(--color-primary)] px-6 py-3 text-base font-medium text-white transition-opacity hover:opacity-90"
             >
-              <FileText size={16} />
+              <FileText size={18} />
               下载简历
             </a>
           )}
           <a
             href="#contact"
-            className="inline-flex items-center gap-2 rounded-xl border border-[var(--color-border)] px-5 py-2.5 text-sm font-medium text-[var(--color-foreground)] transition-colors hover:bg-[var(--color-border)]"
+            className="inline-flex items-center gap-2 rounded-xl border border-[var(--color-border)] px-6 py-3 text-base font-medium text-[var(--color-foreground)] transition-colors hover:bg-[var(--color-border)]"
           >
             联系我
           </a>
